@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Department" representedClassName=".DepartmentMO" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="newRelationship" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipTeam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="relationship" inverseEntity="Team" syncable="YES"/>
     </entity>
     <entity name="Student" representedClassName=".StudentMO" syncable="YES">
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="newRelationship" inverseEntity="Department" syncable="YES"/>
     </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="relationshipTeam" inverseEntity="Person" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="Department" positionX="-351" positionY="-42" width="128" height="75"/>
         <element name="Student" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Department" positionX="-351" positionY="-42" width="128" height="73"/>
+        <element name="Team" positionX="-207" positionY="0" width="128" height="90"/>
+        <element name="Person" positionX="-198" positionY="9" width="128" height="90"/>
     </elements>
 </model>

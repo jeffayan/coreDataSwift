@@ -20,13 +20,17 @@ class ViewController: UIViewController {
     let cellID = "cellId"
     let studentStr = "Student"
     let departmentStr = "Department"
+    let teamStr = "Team"
+    let personStr = "Person"
     
     var studentClass = [StudentMO]()
     var departmentClass = [DepartmentMO]()
+    var personClass = [Person]()
+    var teamClass = [Team]()
     
-    var studentObj : StudentMO? = nil
-    var departmentObj : DepartmentMO? = nil
-    
+    var studentObj : StudentMO?
+    var departmentObj : DepartmentMO?
+    var personObj : Person?
     
     
     lazy var refreshControl:UIRefreshControl = {
@@ -56,8 +60,8 @@ class ViewController: UIViewController {
     
     @IBAction func addClick(_ sender: Any) {
         
-        self.showAlert(studentName: nil, departmentName: nil)
-     
+       // self.showAlert(studentName: nil, departmentName: nil)
+        self.showAlert(person: nil, team: nil)
     }
     
     
@@ -78,6 +82,57 @@ class ViewController: UIViewController {
     }
     
     
+    // Alert For Student
+    func showAlert(person : String?, team : String?){
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: {
+            textField in
+            textField.text = person
+            textField.placeholder = "Name"
+        })
+        
+        alert.addTextField(configurationHandler: {
+            textField in
+            textField.text = team
+            textField.placeholder = "Team"
+        })
+        
+        let saveButton = UIAlertAction(title: "Save", style: .destructive, handler: {
+            Void in
+            
+            guard  let pName = alert.textFields?[0].text else{
+                return
+            }
+            guard let tName = alert.textFields?[1].text else {
+                return
+            }
+            
+            if self.personObj == nil {
+                self.personObj = NSEntityDescription.insertNewObject(forEntityName: self.personStr, into: self.context) as? Person
+                self.personObj?.id =  0//Int16(Date().timeIntervalSince1970)
+                let teamObj = NSEntityDescription.insertNewObject(forEntityName: self.teamStr, into: self.context) as? Team
+                teamObj?.id = 0 //Int16(Date().timeIntervalSince1970)
+                self.personObj?.relationshipTeam = teamObj
+            }
+            
+            self.personObj?.name =  pName
+            self.personObj?.relationshipTeam?.name = tName
+            
+            self.save()
+            self.load()
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(saveButton)
+        alert.addAction(cancelButton)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+     // Alert For Student
      func showAlert(studentName : String?, departmentName : String?){
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
@@ -123,7 +178,6 @@ class ViewController: UIViewController {
             self.studentObj?.newRelationship = self.departmentObj
             
             self.save()
-            
             self.load()
         })
         
@@ -145,13 +199,16 @@ class ViewController: UIViewController {
         let requestDep = DepartmentMO.fetch()
         requestDep.returnsObjectsAsFaults = false
         
+        let requestPerson = Person.fetch()
+        requestPerson.returnsObjectsAsFaults = false
+        
         do {
             
                 self.studentClass = try context.fetch(requestStud)
                 self.departmentClass = try context.fetch(requestDep)
+                self.personClass = try context.fetch(requestPerson)
             
-            
-             print(studentClass.count, departmentClass.count)
+             print(studentClass.count, departmentClass.count, personClass.count,teamClass.count)
             
         }catch let err {
             print(err.localizedDescription)
@@ -170,21 +227,23 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.studentClass.count
+        return self.personClass.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        let studentObj = studentClass[indexPath.row]
+//        let studentObj = personClass[indexPath.row]
+//
+//        let sname = studentObj.name!
+//        let dept = studentObj.department!
+//        let depp = departmentClass[indexPath.row].name!
         
-        let sname = studentObj.name!
-        let dept = studentObj.department!
-        let depp = departmentClass[indexPath.row].name!
+        let personObject = personClass[indexPath.row]
         
       
-        cell.textLabel?.text = sname+dept+depp
+        cell.textLabel?.text = personObject.name!+"-"+personObject.relationshipTeam!.name!
         
         return cell
         
@@ -194,16 +253,16 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
         
         if editingStyle == .delete{
             
-            let obj = studentClass[indexPath.row]
-            let obj1 = departmentClass[indexPath.row]
+//            let obj = studentClass[indexPath.row]
+//            let obj1 = departmentClass[indexPath.row]
+//
+//            context.delete(obj)
+//            context.delete(obj1)
             
+            let obj = personClass[indexPath.row]
             context.delete(obj)
-            context.delete(obj1)
-            
-             save()
-            
+            save()
             load()
-            
             tableView.reloadData()
             
             
@@ -214,14 +273,19 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if studentClass.count > indexPath.row{
-            
-            self.studentObj = studentClass[indexPath.row]
-            self.departmentObj = departmentClass[indexPath.row]
-            
-            self.showAlert(studentName: studentObj?.name, departmentName: studentObj?.department)
-            
-            
+//        if studentClass.count > indexPath.row{
+//
+//            self.studentObj = studentClass[indexPath.row]
+//            self.departmentObj = departmentClass[indexPath.row]
+//
+//            self.showAlert(studentName: studentObj?.name, departmentName: studentObj?.department)
+//
+//
+//        }
+        
+        if self.personClass.count > indexPath.row {
+            self.personObj = personClass[indexPath.row]
+            self.showAlert(person: personObj?.name, team: personObj?.relationshipTeam?.name)
         }
         
     }

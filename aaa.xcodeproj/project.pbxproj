@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083ED6122133E409000CA8B9 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083ED60E2133E409000CA8B9 /* Team+CoreDataClass.swift */; };
+		083ED6132133E409000CA8B9 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083ED60F2133E409000CA8B9 /* Team+CoreDataProperties.swift */; };
+		083ED6142133E409000CA8B9 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083ED6102133E409000CA8B9 /* Person+CoreDataClass.swift */; };
+		083ED6152133E409000CA8B9 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083ED6112133E409000CA8B9 /* Person+CoreDataProperties.swift */; };
 		8B187C4A1F23B027007577C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B187C491F23B027007577C0 /* AppDelegate.swift */; };
 		8B187C4C1F23B027007577C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B187C4B1F23B027007577C0 /* ViewController.swift */; };
 		8B187C4F1F23B027007577C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B187C4D1F23B027007577C0 /* Main.storyboard */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		083ED60E2133E409000CA8B9 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
+		083ED60F2133E409000CA8B9 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		083ED6102133E409000CA8B9 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		083ED6112133E409000CA8B9 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B187C461F23B027007577C0 /* aaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B187C491F23B027007577C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B187C4B1F23B027007577C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +56,10 @@
 		8B187C3D1F23B020007577C0 = {
 			isa = PBXGroup;
 			children = (
+				083ED60E2133E409000CA8B9 /* Team+CoreDataClass.swift */,
+				083ED60F2133E409000CA8B9 /* Team+CoreDataProperties.swift */,
+				083ED6102133E409000CA8B9 /* Person+CoreDataClass.swift */,
+				083ED6112133E409000CA8B9 /* Person+CoreDataProperties.swift */,
 				8B187C6E1F23B631007577C0 /* StudentMO+CoreDataClass.swift */,
 				8B187C6F1F23B631007577C0 /* StudentMO+CoreDataProperties.swift */,
 				8B187C701F23B631007577C0 /* DepartmentMO+CoreDataClass.swift */,
@@ -106,12 +118,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Developer;
 				TargetAttributes = {
 					8B187C451F23B020007577C0 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4S6XZZR5Y9;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -154,11 +167,15 @@
 			files = (
 				8B187C741F23B631007577C0 /* DepartmentMO+CoreDataClass.swift in Sources */,
 				8B187C4C1F23B027007577C0 /* ViewController.swift in Sources */,
+				083ED6142133E409000CA8B9 /* Person+CoreDataClass.swift in Sources */,
 				8B187C4A1F23B027007577C0 /* AppDelegate.swift in Sources */,
+				083ED6132133E409000CA8B9 /* Team+CoreDataProperties.swift in Sources */,
 				8B187C751F23B631007577C0 /* DepartmentMO+CoreDataProperties.swift in Sources */,
 				8B187C651F23B3F8007577C0 /* Model.xcdatamodeld in Sources */,
 				8B187C721F23B631007577C0 /* StudentMO+CoreDataClass.swift in Sources */,
+				083ED6122133E409000CA8B9 /* Team+CoreDataClass.swift in Sources */,
 				8B187C731F23B631007577C0 /* StudentMO+CoreDataProperties.swift in Sources */,
+				083ED6152133E409000CA8B9 /* Person+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,15 +210,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -242,15 +267,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -284,7 +317,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Developer.aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -297,7 +331,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Developer.aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
