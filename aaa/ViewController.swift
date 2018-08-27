@@ -162,7 +162,7 @@ class ViewController: UIViewController {
             }
             
             if self.studentObj == nil {
-                self.studentObj = NSEntityDescription.insertNewObject(forEntityName: self.studentStr, into: self.context) as? StudentMO
+                self.studentObj = StudentMO(context: self.context)
             }
             
             self.studentObj?.name =  sName
@@ -170,7 +170,7 @@ class ViewController: UIViewController {
             
             if self.departmentObj == nil {
                 
-                self.departmentObj = NSEntityDescription.insertNewObject(forEntityName: self.departmentStr, into: self.context) as? DepartmentMO
+                self.departmentObj = DepartmentMO(context: self.context)
                 
             }
             
@@ -207,7 +207,6 @@ class ViewController: UIViewController {
                 self.studentClass = try context.fetch(requestStud)
                 self.departmentClass = try context.fetch(requestDep)
                 self.personClass = try context.fetch(requestPerson)
-            
              print(studentClass.count, departmentClass.count, personClass.count,teamClass.count)
             
         }catch let err {
